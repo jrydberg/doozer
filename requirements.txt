@@ -1,0 +1,5 @@
+webob
+gevent
+requests
+pyee
+routes

@@ -1,0 +1,2 @@
+from doozer import script
+script.main()
