@@ -3,3 +3,7 @@ gevent
 requests
 pyee
 routes
+nose
+pyyaml
+git+https://github.com/edgeware/mockito-python.git
+behave

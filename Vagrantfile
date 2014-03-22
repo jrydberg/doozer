@@ -32,13 +32,22 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     echo "Installing Base Packages"
     export DEBIAN_FRONTEND=noninteractive
     sudo apt-get update -qq
-    sudo apt-get install -qqy --force-yes build-essential git python python-dev python-pip 
+    sudo apt-get install -qqy --force-yes python-software-properties
+    sudo add-apt-repository ppa:chris-lea/node.js
+    sudo apt-get update -qq
+    sudo apt-get install -qqy --force-yes build-essential git python python-dev python-pip nodejs npm
+
+    echo "Install bower"
+    sudo npm config set registry http://registry.npmjs.org/
+    sudo npm install -g bower
 
     # Docker
+    echo "Install docker"
     curl -s https://get.docker.io/ubuntu/ | sudo sh
     sudo usermod -a -G docker vagrant
 
     # Install dependencies
+    echo "Install python deps"
     sudo pip install -r /vagrant/requirements.txt
 
     # Cleanup
